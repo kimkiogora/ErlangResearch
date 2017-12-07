@@ -17,7 +17,7 @@ An erlang powered system for storing and tracking credit defaulters
 
 	{
 	    "status": "200",
-   	    "message": "Error"
+ 	    "message": "Error"
 	}
 
 * Example 1 - Check CRB
