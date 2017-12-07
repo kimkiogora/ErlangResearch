@@ -30,8 +30,6 @@ An erlang powered system for storing and tracking credit defaulters
             "message": "FAIL"
         }
 
-	```
-
 * Example 2 - Report CRB
 	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"1", "accrued":"2000"}' http://localhost:9002/report
 	```
