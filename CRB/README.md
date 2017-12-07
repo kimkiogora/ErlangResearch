@@ -6,12 +6,23 @@ An erlang powered system for storing and tracking credit defaulters
 * Redis - sudo apt-get install redis
 
 # Usage
+* Run the server
+	* cd crbserver/
+	* ./_rel/crbserver_release/bin/crbserver_release status
+	* ./_rel/crbserver_release/bin/crbserver_release start
+	* ./_rel/crbserver_release/bin/crbserver_release stop
+* Check the server - curl -H "Accept: application/json" http://localhost:9002/
+{
+	"status": "200",
+   	"message": "Error"
+}
+
 * Example 1 - Check CRB
-	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com"}' http://localhost:8081/check
+	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com"}' http://localhost:9002/check
 
 * Example 2 - Report CRB
-	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"1", "accrued":"2000"}' http://localhost:8081/report
+	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"1", "accrued":"2000"}' http://localhost:9002/report
 
 * Example 3 - Update CRB
-	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"0"}' http://localhost:8081/update
+	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"0"}' http://localhost:9002/update
 
