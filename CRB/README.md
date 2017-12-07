@@ -32,7 +32,7 @@ API uses GET protocol
 	}
 
 * Example 2 - Report CRB
-	* curl -H "Accept: application/json" http://localhost:9002/report?contact=XXXYYYZZZ&status=1&accrued=2000
+	* curl -H "Accept: application/json" http://localhost:9002/report?contact=XXXYYYZZZ&status=1&accrued=2000&reportedBy=BANKA
 	```
 	Response - OK means its saved in CRB, FAIL means otherwise
 	
