@@ -1,5 +1,6 @@
 # Credit Review System
 An erlang powered system for storing and tracking credit defaulters
+API uses GET protocol
 
 # Dependencies
 * Erlang - sudo apt-get install erlang
@@ -21,9 +22,9 @@ An erlang powered system for storing and tracking credit defaulters
 	}
 
 * Example 1 - Check CRB
-	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com"}' http://localhost:9002/check
+	* curl -H "Accept: application/json" http://localhost:9002/check?contact=XXXYYY
 	```
-	Respose
+	Respose - FAIL means contact is no in CRB, OK means otherwise
 
 	{
 	    "status": "200",
@@ -31,9 +32,9 @@ An erlang powered system for storing and tracking credit defaulters
 	}
 
 * Example 2 - Report CRB
-	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"1", "accrued":"2000"}' http://localhost:9002/report
+	* curl -H "Accept: application/json" http://localhost:9002/report?contact=XXXYYYZZZ&status=1&accrued=2000
 	```
-	Response
+	Response - OK means its saved in CRB, FAIL means otherwise
 	
 	{
 	    "status": "200",
@@ -41,10 +42,10 @@ An erlang powered system for storing and tracking credit defaulters
 	}
 
 
-* Example 3 - Update CRB
-	* curl -H "Accept: application/json" -d '{"contact":"kimkiogora@gmail.com", "status":"0"}' http://localhost:9002/update
+* Example 3 - Update CRB - status can be False/True
+	* curl -H "Accept: application/json" http://localhost:9002/update?status=False
 	```
-	Response 
+	Response - OK means its saved in CRB, FAIL means otherwise
 	{
 	    "status": "200",
 	    "message": "OK"
