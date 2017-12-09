@@ -43,7 +43,7 @@ API uses GET protocol
 
 
 * Example 3 - Update CRB - status can be False/True
-	* curl -H "Accept: application/json" http://localhost:9002/update?status=False
+	* curl -H "Accept: application/json" http://localhost:9002/update?contact=XXXYYYZZZ&status=False
 	```
 	Response - OK means its saved in CRB, FAIL means otherwise
 	{
