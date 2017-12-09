@@ -11,7 +11,7 @@
         ]).
 
 -export([
-         time_to_json/2
+         handle_request/2
         ]).
 
 init(Req, Opts) ->
@@ -19,16 +19,16 @@ init(Req, Opts) ->
 
 content_types_provided(Req, State) ->
     {[
-        {<<"application/json">>, time_to_json}
+        {<<"application/json">>, handle_request}
     ], Req, State}.
 
 %Actual API Call
-time_to_json(Req, State) ->
-	logger:log([?LOGPATH], "Call?time_to_json: XXXX"),
+handle_request(Req, State) ->
+	logger:log([?LOGPATH], "Call?handle_request: XXXX"),
 	Body = "
 {
 	\"status\": \"200\",
    	\"message\": \"Error\"
 }",
-    	logger:log([?LOGPATH], "Call?time_to_json: Response sent back. End#"),
+    	logger:log([?LOGPATH], "Call?handle_request: Response sent back. End#"),
     	{Body, Req, State}.
