@@ -12,7 +12,7 @@ API uses GET protocol
 	* ./_rel/crbserver_release/bin/crbserver_release status
 	* ./_rel/crbserver_release/bin/crbserver_release start
 	* ./_rel/crbserver_release/bin/crbserver_release stop
-* Check the server - curl -H "Accept: application/json" http://localhost:9002/
+* Check the server - curl -H "Accept: application/json" "http://localhost:9002/"
 	```
 	Response
 
@@ -22,7 +22,7 @@ API uses GET protocol
 	}
 
 * Example 1 - Check CRB
-	* curl -H "Accept: application/json" http://localhost:9002/check?contact=XXXYYY
+	* curl -H "Accept: application/json" "http://localhost:9002/check?contact=XXXYYY"
 	```
 	Respose - FAIL means contact is no in CRB, OK means otherwise
 
@@ -32,7 +32,7 @@ API uses GET protocol
 	}
 
 * Example 2 - Report to CRB
-	* curl -H "Accept: application/json" http://localhost:9002/report?contact=XXXYYYZZZ&accrued=2000&reportedBy=BANKA
+	* curl -H "Accept: application/json" "http://localhost:9002/report?contact=XXXYYYZZZ&accrued=2000&reportedBy=BANKA"
 	```
 	Response - OK means its saved in CRB, FAIL means otherwise
 	
@@ -43,7 +43,7 @@ API uses GET protocol
 
 
 * Example 3 - Update CRB - status can be False/True
-	* curl -H "Accept: application/json" http://localhost:9002/update?contact=XXXYYYZZZ&status=False
+	* curl -H "Accept: application/json" "http://localhost:9002/update?contact=XXXYYYZZZ&status=False"
 	```
 	Response - OK means its saved in CRB. This function always returns status 200 whether
 	contact exists or not
