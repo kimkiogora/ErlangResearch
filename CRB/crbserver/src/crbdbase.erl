@@ -38,11 +38,11 @@ find( Contact ) ->
 	logger:log([?LOGPATH], io_lib:format("Check if row is set ~p",[YD])),
 	case YD =:= [] of 
 		true -> 
-			logger:log([?LOGPATH], "Here Matches"),
+			logger:log([?LOGPATH], "No match found"),
 			[Contact,"FALSE"];
 		false ->
 			{atomic, [Row]} = Res,
-			logger:log([?LOGPATH], "Here No Matches "),
+			logger:log([?LOGPATH], "Found match"),
 			[Row#defaulters.contact, Row#defaulters.status]
 	end.
 
@@ -58,10 +58,10 @@ findN( Contact ) ->
 	logger:log([?LOGPATH], io_lib:format("Check if row is set ~p",[YD])),
 	case YD =:= [] of
 	        true ->
-	               logger:log([?LOGPATH], "Here Matches"),[Contact,"FALSE","NA", "0"];
+	               logger:log([?LOGPATH], "No match found"),[Contact,"FALSE","NA", "0"];
 	        false ->
 	               {atomic, [Row]} = Res,
-	               logger:log([?LOGPATH], "Here No Matches "),
+	               logger:log([?LOGPATH], "Found match "),
 		       [Row#defaulters.contact, Row#defaulters.status, Row#defaulters.company, Row#defaulters.amount]	                                                             
 	end.
 
