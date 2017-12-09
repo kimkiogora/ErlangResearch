@@ -31,8 +31,8 @@ API uses GET protocol
 	    "message": "FAIL"
 	}
 
-* Example 2 - Report CRB
-	* curl -H "Accept: application/json" http://localhost:9002/report?contact=XXXYYYZZZ&status=1&accrued=2000&reportedBy=BANKA
+* Example 2 - Report to CRB
+	* curl -H "Accept: application/json" http://localhost:9002/report?contact=XXXYYYZZZ&accrued=2000&reportedBy=BANKA
 	```
 	Response - OK means its saved in CRB, FAIL means otherwise
 	
