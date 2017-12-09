@@ -1,7 +1,7 @@
 %% @doc REST time handler.
 -module(update_handler).
 -import(logger,[log/2]).
-
+-import(string,[equal/2]).
 -define(LOGPATH, "/var/log/erlang/crbserver.log").
 
 %% Webmachine API
@@ -37,7 +37,7 @@ time_to_json(Req, State) ->
 				proceed(QsVals)
 		end,
     	logger:log([?LOGPATH], "Call?update_handler: Response sent back. End#"),
-    	{Body, Req, State}.
+    	{FBody, Req, State}.
 
 proceed(QSVals)->
 	{_, Contact} = lists:keyfind(<<"contact">>, 1, QSVals),
@@ -68,16 +68,34 @@ check_contact(XContact, XUpdate)->
 % Check exists
 % If exists delete/update
 send_update(Contact, StatusUpdate)->
-	ok.
+	logger:log([?LOGPATH],io_lib:format("Updating record ~s to status ~s",[Contact, StatusUpdate])),
+	FC = crbdbase:find(stringify(Contact)),
+	case FC =:= [] of 
+		true -> 
+			logger:log([?LOGPATH], io_lib:format("Record ~s not found -Ignore",[Contact]));
+		false ->
+			logger:log([?LOGPATH], io_lib:format("Record ~s found -update",[Contact])),
+			ST = crbdbase:update(stringify(Contact), stringify(StatusUpdate)),
+			logger:log([?LOGPATH],io_lib:format("Update status ~s",[ST]))
+	end,
+	success_message().
 
-error_message()->
-	Body = 
-"{
-    \"status\": \"201\",
-    \"message\": \"FAIL\"
-}",
-	Body.
+% Convert to string
+stringify(Item)->
+	NItem = lists:flatten(Item),
+	logger:log([?LOGPATH], NItem),
+	NItem.
 
+% Print error message
+%error_message()->
+%	Body = 
+%"{
+%    \"status\": \"201\",
+%    \"message\": \"FAIL\"
+%}",
+%	Body.
+
+% Print success message.
 success_message()->
 	Body = 
 "{
