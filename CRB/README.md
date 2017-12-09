@@ -6,6 +6,12 @@ API uses GET protocol
 * Erlang - sudo apt-get install erlang
 * Redis - sudo apt-get install redis
 
+#Compile
+make clean && make
+
+#Compile and Run
+make clean && make run
+
 # Usage
 * Run the server
 	* cd crbserver/
