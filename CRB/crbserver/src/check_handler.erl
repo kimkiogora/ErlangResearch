@@ -14,7 +14,7 @@
         ]).
 
 -export([
-         time_to_json/2
+         handle_request/2
         ]).
 
 init(Req, Opts) ->
@@ -22,11 +22,11 @@ init(Req, Opts) ->
 
 content_types_provided(Req, State) ->
     {[
-        {<<"application/json">>, time_to_json}
+        {<<"application/json">>, handle_request}
     ], Req, State}.
 
 %Actual API Call
-time_to_json(Req, State) ->
+handle_request(Req, State) ->
 	QsVals = cowboy_req:parse_qs(Req),
 	logger:log([?LOGPATH], io_lib:format("Request params ~p", [QsVals])),
 	FBody = case QsVals =:= [] of
