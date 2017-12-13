@@ -16,8 +16,9 @@ API uses GET protocol
 * Run the server
 	* cd crbserver/
 	* ./_rel/crbserver_release/bin/crbserver_release status
-	* ./_rel/crbserver_release/bin/crbserver_release start
 	* ./_rel/crbserver_release/bin/crbserver_release stop
+	* ./_rel/crbserver_release/bin/crbserver_release start
+
 * Check the server - curl -H "Accept: application/json" "http://localhost:9002/"
 	```
 	Response
